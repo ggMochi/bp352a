@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explorador de Indicadores de Saúde - OMS</title>
+  <link rel="stylesheet" href="/stlyes/style_selector.css">
+  <link rel="icon" href="https://www.who.int/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="/img/c48dc030348859e3f6b17c37161177d5 (1).png" alt="OMS Logo" class="logo">
+      <h1>Explorador de Indicadores de Saúde</h1>
+    </div>
+    <p class="subtitle">Acesso aos dados da API Global Health Observatory</p>
+  </header>
+
+  <main>
+    <section class="search-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" 
+               placeholder="Digite o código do indicador (ex: NTD, MALA, HIV)">
+        <button onclick="fetchIndicators()">
+          <span class="search-icon">🔍</span> Buscar
+        </button>
+      </div>
+      <div class="examples">
+        <p>Exemplos: 
+          <span class="example-tag" onclick="searchExample('NTD_')">Doenças Negligenciadas</span>
+          <span class="example-tag" onclick="searchExample('MALA')">Malária</span>
+          <span class="example-tag" onclick="searchExample('HIV')">HIV/AIDS</span>
+        </p>
+      </div>
+    </section>
+
+    <section class="results-container">
+      <div id="results">
+        <div class="loading">
+          <div class="spinner"></div>
+          <p>Carregando indicadores disponíveis...</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Dados fornecidos pela <a href="https://www.who.int/data/gho" target="_blank">Organização Mundial da Saúde</a></p>
+    <p class="disclaimer">Este não é um site oficial da OMS. Apenas um visualizador de dados públicos.</p>
+  </footer>
+
+  <script src="/script/script_selector.js"></script>
+</body>
+</html>

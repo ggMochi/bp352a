@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Monitor de Doenças Tropicais Negligenciadas no Brasil</title>
+  <link rel="stylesheet" href="/stlyes/style_main.css">
+</head>
+<body>
+
+  <div class="card indicator-selector">
+    <label for="indicatorSelector"><h2>Selecione a Doença/Indicador:</h2></label>
+    <select id="indicatorSelector" onchange="onIndicatorChange()">
+
+      
+      <!-- Leishmaniose -->
+      <optgroup label="Leishmaniose">
+        <option value="NTD_LEISHCNUM">Casos de Leishmaniose Cutânea</option>
+        <option value="NTD_LEISHVNUM" selected>Casos de Leishmaniose Visceral</option>
+      </optgroup>
+      
+      <!-- Hanseníase -->
+      <optgroup label="Hanseníase">
+        <option value="NTD_LEPR3">Casos em Tratamento</option>
+        <option value="NTD_LEPR8">Novos Casos em Crianças</option>
+        <option value="NTD_LEPR4">Taxa de Prevalência</option>
+      </optgroup>
+      
+      <!-- Malária -->
+      <optgroup label="Malária">
+        <option value="MALARIA_CONF_CASES">Casos Confirmados de Malária</option>
+        <option value="MALARIA_INDIG">Casos em Áreas Indigenas</option>
+      </optgroup>
+      
+      <!-- Taenia Solium -->
+      <optgroup label="Taenia Solium">
+        <option value="NTD_TSOL1">Status de Endemicidade</option>
+      </optgroup>
+      
+      <!-- Outras DTNs -->
+      <optgroup label="Outras Doenças">
+        <option value="NTD_RAB2">Mortes por Raiva Humana</option>
+        <option value="NTD_7">População em Risco de Tracoma</option>
+        <option value="NTD_8">Pessoas Tratadas para Tracoma</option>
+      </optgroup>
+    </select>
+  </div>
+
+
+  <div class="card disease-info">
+  <h2>Informações sobre a Doença</h2>
+  <div id="diseaseInfoContent">
+    <div class="loading">Selecione uma doença para ver informações...</div>
+  </div>
+
+</div>
+  <div class="card">
+    <h1 id="indicatorTitle">Casos de Leishmaniose Visceral no Brasil</h1>
+    <div id="mainResult">
+      <div class="loading">Carregando dados...</div>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>Detalhes por Ano</h2>
+    <div id="detailedResults"></div>
+  </div>
+
+  <div class="card">
+    <h2>Análise Temporal</h2>
+    <div id="statsSummary"></div>
+    <div class="chart-container">
+      <canvas id="simpleChart"></canvas>
+    </div>
+  </div>
+  
+  <div class="card">
+    <h2>Metadados e Informações Técnicas</h2>
+    <div id="metadataResults"></div>
+  </div>
+
+<div class="references-footer">
+  <a href="/html/selector.html" class="references-button">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+      <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+    </svg>
+    Indicadores da Organização Mundial de Saúde 
+  </a>
+</div>
+
+
+  <script src="/script/script_main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

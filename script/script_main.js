@@ -139,33 +139,30 @@ let selectedCountry = 'BRA';
 let chartInstance = null;
 
 async function fetchData() {
-  const proxy = 'https://corsproxy.io/?';
-  const filter = encodeURIComponent(`$filter=SpatialDim eq '${selectedCountry}'`);
-  const url = proxy + encodeURIComponent(`https://ghoapi.azureedge.net/api/${selectedIndicator}?${filter}`);
-  
+  const url = `https://ghoapi.azureedge.net/api/${selectedIndicator}?$filter=SpatialDim eq '${selectedCountry}'`;
+
   try {
     document.getElementById('mainResult').innerHTML = '<div class="loading">Carregando dados...</div>';
-    
+
     const response = await fetch(url);
+
     if (!response.ok) throw new Error(`Erro HTTP: ${response.status}`);
-    
+
     const data = await response.json();
-    
-    // Verificação segura dos dados
+
     if (!data.value || data.value.length === 0) {
       throw new Error('Nenhum dado encontrado para o país selecionado');
     }
-    
-    // Processamento seguro dos registros
+
     const processedRecords = data.value.map(record => ({
       ...record,
       TimeDim: record.TimeDim || null,
       Value: record.Value || 'Não disponível',
       NumericValue: record.NumericValue ?? null
     }));
-    
+
     displayAllData(processedRecords);
-    
+
   } catch (error) {
     showError(error);
   }

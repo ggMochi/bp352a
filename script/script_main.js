@@ -139,7 +139,7 @@ let selectedCountry = 'BRA';
 let chartInstance = null;
 
 async function fetchData() {
-  const url = `https://ghoapi.azureedge.net/api/${selectedIndicator}?$filter=SpatialDim eq '${selectedCountry}'`;
+  const url = `/.netlify/functions/fetchData?indicator=${selectedIndicator}&country=${selectedCountry}`;
 
   try {
     document.getElementById('mainResult').innerHTML = '<div class="loading">Carregando dados...</div>';
